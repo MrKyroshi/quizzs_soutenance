@@ -71,4 +71,56 @@ const QuizzPop = () => {
         },
     ];
 
+    const handleReset = () => {
+        setCurrentQuestion (0);
+        setScore(0);
+        setAnswers([]);
+        setIsFinished(false);
+    };
+
+    useEffect(() => {
+        let score = 0;
+        answers.forEach((answer,index)=>{
+            if (answer === questions[index].correctAnswers) {
+                score +10;
+            }
+        });
+        setScore(score);
+     },[answers]);
+   
+}
+ // Ajouter condition isFinished
+ if(isFinite){
+    return(
+        <Container>
+            <Row>
+                <Col>
+                <Card>
+                    <Card.Body>
+                        <h1>Quizz Pop Culture</h1>
+                        <h2> Vous avez terminé le quizz!!!
+                            Votre score est de {score}
+                        </h2>
+                        <div className='commentaire'>
+                            {{0 : <h3>T'es harcil-nul</h3> && <img src ="https://www.gifimili.com/gif/2018/02/tristesse.gif" alt='Tristesse'/>,
+                            1: <h3>T'es nul</h3> && <img src ="https://media.tenor.com/u3KAPOKEolAAAAAi/uka-uka-i%C3%A5s2020.gif" alt='Tristesse'/>,
+                            2: <h3>T'es nul</h3> && <img src ="https://media.tenor.com/u3KAPOKEolAAAAAi/uka-uka-i%C3%A5s2020.gif" alt='Tristesse'/>,
+                            3: <h3>T'as aucune culture pop </h3> && <img src="https://media.tenor.com/fNSfyXu6TMQAAAAd/courage-courageous.gif" alt='danse swift'/>,
+                            4: <h3>T'as aucune  culture pop mais c'est pas foutu</h3> && <img src="https://media.tenor.com/fNSfyXu6TMQAAAAd/courage-courageous.gif" alt='danse swift'/>,
+                            5: <h3>Wakanda t'encourage</h3> && <img src="https://tenor.com/fr/search/wkanda-gifs" alt='waka waka '/>,
+                            6: <h3>Wakanda t'encourage</h3> && <img src="https://tenor.com/fr/search/wkanda-gifs" alt='waka waka '/>,
+                            7: <h3>Tu est presque</h3> && <img src="https://tenor.com/fr/view/dhalsim-street-fighter-alpha-dancing-victory-gif-17716797" alt='dhalsim'/>,
+                            8: <h3>Tu est presque</h3> && <img src="https://tenor.com/fr/view/dhalsim-street-fighter-alpha-dancing-victory-gif-17716797" alt='dhalsim'/>,
+                            9: <h3>Excellent!!!</h3> && <img src="https://media.tenor.com/-_CuKtWc3-EAAAAC/mortal-kombat-mortal-kombat11.gif" alt='kombat'/>,
+                            10: <h3>Fawless Victory !!!</h3> && <img src="https://media.tenor.com/-_CuKtWc3-EAAAAC/mortal-kombat-mortal-kombat11.gif" alt='kombat'/>,
+                             }},
+                             
+                        </div>
+                    </Card.Body>
+                </Card>
+                </Col>
+            </Row>
+        </Container>
+    )
+ }
 }
