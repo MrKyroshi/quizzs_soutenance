@@ -1,11 +1,13 @@
 import React from 'react'; 
 import { useState, useEffect } from 'react'; 
 
-const QuizzPop = () => {
+const QuizzPop = () =>
+{
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [score, setScore] = useState(0);
     const [answers, setAnswers] = useState([]);
-    const [isFinished, setIsFinished] = useState(false)
+    const [isFinished, setIsFinished] = useState(false);
+    
 
     // Question sur la pop culture
     const questions = [
@@ -46,7 +48,7 @@ const QuizzPop = () => {
             points: 10
         },
         {
-            questions: "Quel est le premier grand succès des Spice Girls ?",
+            question: "Quel est le premier grand succès des Spice Girls ?",
             options: ["Wannabe", "Spice up your life", "2 become 1", "Say you'll be there"],
             correctAnswers: "Wannabe",
             points: 10
@@ -68,7 +70,7 @@ const QuizzPop = () => {
             options: ["A Freddie Mercury", "A Michael Jackson", "A John Lennon", "A Lady Diana"],
             correctAnswers: "A Lady Diana",
             points: 10
-        },
+        }
     ];
 
     const handleReset = () => {
@@ -78,20 +80,20 @@ const QuizzPop = () => {
         setIsFinished(false);
     };
 
-    useEffect(() => {
+    useEffect(() =>{
         let score = 0;
         answers.forEach((answer,index)=>{
-            if (answer === questions[index].correctAnswers) {
-                score +10;
-            }
-        });
-        setScore(score);
-     },[answers]);
+            if (answer === questions[index].correctAnswers) {score +10;}
+    });
+    
+    setScore(score);
+},[answers]);
    
-}
+{ 
+ 
  // Ajouter condition isFinished
- if(isFinite){
-    return(
+if(isFinished){ 
+     return(
         <Container>
             <Row>
                 <Col>
@@ -113,14 +115,37 @@ const QuizzPop = () => {
                             8: <h3>Tu est presque</h3> && <img src="https://tenor.com/fr/view/dhalsim-street-fighter-alpha-dancing-victory-gif-17716797" alt='dhalsim'/>,
                             9: <h3>Excellent!!!</h3> && <img src="https://media.tenor.com/-_CuKtWc3-EAAAAC/mortal-kombat-mortal-kombat11.gif" alt='kombat'/>,
                             10: <h3>Fawless Victory !!!</h3> && <img src="https://media.tenor.com/-_CuKtWc3-EAAAAC/mortal-kombat-mortal-kombat11.gif" alt='kombat'/>,
-                             }},
                              
+                             }[score]
+                             },
                         </div>
+                        <Button onClick={handleReset}>Recommencer</Button>
+                    </Card.Body>
+                </Card>
+            </Col>
+        </Row>
+    </Container>
+    );
+    }
+    return(
+        <Contenainer>
+            <Row>
+                <Col>
+                <Card>
+                    <Card.Body>
+                        <h1>Quizz Pop Culture</h1>
+                        <h2>{questions[currentQuestion].question}</h2>
+                        {questions[currentQuestion].option.map((option,index)=>(
+                            <Bouton key={index}>
+                                {option}
+                            </Bouton>
+                        ))}
                     </Card.Body>
                 </Card>
                 </Col>
             </Row>
-        </Container>
-    )
- }
-}
+        </Contenainer>
+
+    );
+        
+};
